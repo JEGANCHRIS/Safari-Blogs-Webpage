@@ -30,7 +30,7 @@ export function HeaderSection() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3009/api/categories")
+      .get(`${import.meta.env.VITE_API_URL}/api/categories`)
       .then((res) => {
         console.log("API response:", res.data);
         setCategories(res.data.categories);

@@ -54,10 +54,10 @@ const UserManagement = () => {
   const fetchUsers = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3009/api/GetAllUsers?page=${page}&limit=10`,
+        `${import.meta.env.VITE_API_URL}/api/GetAllUsers?page=${page}&limit=10`,
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
 
       let allUsers = [];
@@ -114,7 +114,7 @@ const UserManagement = () => {
         {},
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
+        },
       );
 
       if (res.data?.token) {
@@ -139,7 +139,7 @@ const UserManagement = () => {
   // Update user
   const handleUpdate = async (id, data) => {
     try {
-      await axios.put(`http://localhost:3009/api/users/${id}`, data, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/users/${id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchUsers();
@@ -162,7 +162,7 @@ const UserManagement = () => {
       const res = await axios.post(
         "https://safari-blogs-webpage-2.onrender.com/api/Create-Users",
         userInput,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       console.log("user Created:", res.data);
       setShowUserForm(false);
@@ -187,7 +187,7 @@ const UserManagement = () => {
       const res = await axios.post(
         "https://safari-blogs-webpage-2.onrender.com/api/users/admin",
         formData,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       console.log("Admin created:", res.data);
       setShowAdminForm(false);
@@ -206,9 +206,12 @@ const UserManagement = () => {
   // Final delete action
   const confirmDeleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:3009/api/delete-user/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/delete-user/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       fetchUsers();
       setConfirmDelete(null);
       setShowCaution(false);

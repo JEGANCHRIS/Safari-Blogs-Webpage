@@ -58,7 +58,7 @@ export function BannerSection() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://localhost:3009/api/categories");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/categories`);
         const data = await res.json();
         console.log("Fetched categories response:", data);
         setCategories(data.categories || data || []); // <-- be flexible
@@ -69,11 +69,14 @@ export function BannerSection() {
     const fetchBlogs = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:3009/api/getmyblogs", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/getmyblogs`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
         const data = await res.json();
         setBlogs(Array.isArray(data) ? data : data.blogs || []);
       } catch (err) {
@@ -101,10 +104,10 @@ export function BannerSection() {
     setIsPublished(blog.isPublished);
     setCategory(blog.category?._id || blog.category);
     if (blog.bannerImage) {
-      setBannerPreview(`http://localhost:3009/${blog.bannerImage}`);
+      setBannerPreview(`${import.meta.env.VITE_API_URL}/${blog.bannerImage}`);
     }
     if (blog.cardImage) {
-      setCardPreview(`http://localhost:3009/${blog.cardImage}`);
+      setCardPreview(`${import.meta.env.VITE_API_URL}/${blog.cardImage}`);
     }
 
     setEditingBlog(blog._id);
@@ -116,8 +119,8 @@ export function BannerSection() {
     try {
       const token = localStorage.getItem("token");
       const url = editingBlog
-        ? `http://localhost:3009/api/UpdateBlogs/${editingBlog}`
-        : "http://localhost:3009/api/create-Blogs";
+        ? `${import.meta.env.VITE_API_URL}/api/UpdateBlogs/${editingBlog}`
+        : `${import.meta.env.VITE_API_URL}/api/create-Blogs`;
 
       const method = editingBlog ? "PUT" : "POST";
 
@@ -155,12 +158,15 @@ export function BannerSection() {
         setCardPreview(null);
 
         // reload blogs
-        const updated = await fetch("http://localhost:3009/api/getmyblogs", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const updated = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/getmyblogs`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
         const updatedData = await updated.json();
         setBlogs(
-          Array.isArray(updatedData) ? updatedData : updatedData.blogs || []
+          Array.isArray(updatedData) ? updatedData : updatedData.blogs || [],
         );
       } else {
         setMessage({
@@ -184,16 +190,16 @@ export function BannerSection() {
     if (!blogToDelete) return;
     try {
       await axios.delete(
-        `http://localhost:3009/api/deleteBlog/${blogToDelete}`,
+        `${import.meta.env.VITE_API_URL}/api/deleteBlog/${blogToDelete}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
       setMessage({ type: "success", text: "Blog deleted successfully!!" });
       setBlogs((prevBlogs) =>
-        prevBlogs.filter((blog) => blog._id !== blogToDelete)
+        prevBlogs.filter((blog) => blog._id !== blogToDelete),
       );
       fetchBlogs();
     } catch (err) {
@@ -209,7 +215,7 @@ export function BannerSection() {
     ? blogs.filter(
         (blog) =>
           blog.isPublished === true &&
-          blog.category?.categoryName === selectedCategory
+          blog.category?.categoryName === selectedCategory,
       )
     : blogs.filter((blog) => blog.isPublished === true);
 
@@ -218,7 +224,7 @@ export function BannerSection() {
   const startIndex = (currentPage - 1) * blogsPerPage;
   const currentBlogs = filteredBlogs.slice(
     startIndex,
-    startIndex + blogsPerPage
+    startIndex + blogsPerPage,
   );
 
   const goToPage = (page) => {
@@ -288,9 +294,9 @@ export function BannerSection() {
                       const cardImg = blog.cardImage
                         ? blog.cardImage.startsWith("http")
                           ? blog.cardImage
-                          : `http://localhost:3009/${blog.cardImage.replace(
+                          : `${import.meta.env.VITE_API_URL}/${blog.cardImage.replace(
                               /^\/+/,
-                              ""
+                              "",
                             )}`
                         : "https://via.placeholder.com/300x180?text=No+Image";
 
