@@ -1,3 +1,4 @@
+console.log("🔥 NEW BUILD LOADED 🔥");
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./router/userRouter");
@@ -23,7 +24,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-
 
 // Upload API for CKEditor
 app.post("/api/uploads", upload.single("file"), (req, res) => {
