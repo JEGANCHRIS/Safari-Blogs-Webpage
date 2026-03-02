@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (mail, password) => {
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:3009/api/login", {
+      const res = await axios.post("https://safari-blogs-webpage-2.onrender.com/api/login", {
         mail,
         password,
       });
@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
       // attach current token (admin) if present so backend authorizes impersonation
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
       const res = await axios.post(
-        `http://localhost:3009/api/loginAsUser/${userId}`,
+        `https://safari-blogs-webpage-2.onrender.com/api/loginAsUser/${userId}`,
         {},
         { headers }
       );
@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
       if (token) headers.Authorization = `Bearer ${token}`;
 
       const res = await axios.post(
-        "http://localhost:3009/api/Create-Users",
+        "https://safari-blogs-webpage-2.onrender.com/api/Create-Users",
         formData,
         { headers }
       );

@@ -21,7 +21,7 @@ export function ContactUs() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:3009/api/contactUs",
+        "https://safari-blogs-webpage-2.onrender.com/api/contactUs",
         formData
       );
       setFormData({ name: "", mail: "", mobile: "", message: "" });

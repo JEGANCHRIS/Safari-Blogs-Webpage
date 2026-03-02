@@ -30,7 +30,8 @@ app.post("/api/uploads", upload.single("file"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
-  const fileUrl = `http://localhost:3009/uploads/${req.file.filename}`;
+  const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3009}`;
+  const fileUrl = `${baseUrl}/uploads/${req.file.filename}`;
   res.json({ url: fileUrl });
 });
 
@@ -38,8 +39,9 @@ app.post("/api/uploads", upload.single("file"), (req, res) => {
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // DB
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/userManagement";
 mongoose
-  .connect("mongodb://localhost:27017/userManagement", { autoIndex: true })
+  .connect(MONGODB_URI, { autoIndex: true })
   .then(async () => {
     console.log("Connected to MongoDB userManagement");
     await seedSuperAdmin();

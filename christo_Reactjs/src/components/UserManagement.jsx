@@ -110,7 +110,7 @@ const UserManagement = () => {
   const handleLoginAsUser = async (userId) => {
     try {
       const res = await axios.post(
-        `http://localhost:3009/api/loginAsUser/${userId}`,
+        `https://safari-blogs-webpage-2.onrender.com/api/loginAsUser/${userId}`,
         {},
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -160,7 +160,7 @@ const UserManagement = () => {
     }
     try {
       const res = await axios.post(
-        "http://localhost:3009/api/Create-Users",
+        "https://safari-blogs-webpage-2.onrender.com/api/Create-Users",
         userInput,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -185,7 +185,7 @@ const UserManagement = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3009/api/users/admin",
+        "https://safari-blogs-webpage-2.onrender.com/api/users/admin",
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

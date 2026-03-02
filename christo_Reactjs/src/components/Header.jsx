@@ -85,7 +85,7 @@ export function HeaderSection() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3009/api/login",
+        "https://safari-blogs-webpage-2.onrender.com/api/login",
         credinals
       );
       const token = res.data?.token;
@@ -129,7 +129,7 @@ export function HeaderSection() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:3009/api/Create-Users",
+        "https://safari-blogs-webpage-2.onrender.com/api/Create-Users",
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
