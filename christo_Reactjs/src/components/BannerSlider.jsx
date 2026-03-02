@@ -12,7 +12,7 @@ export function BannerSlider({ mode = "home" }) {
     const token = localStorage.getItem("token");
     console.log("Token:", token);
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/getmyblogs`, {
+    fetch("http://localhost:3009/api/getmyblogs", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
@@ -39,7 +39,7 @@ export function BannerSlider({ mode = "home" }) {
             title: b.title,
             img: b.bannerImage.startsWith("http")
               ? b.bannerImage
-              : `${import.meta.env.VITE_API_URL}/${b.bannerImage.replace(/^\/+/, "")}`,
+              : `http://localhost:3009/${b.bannerImage.replace(/^\/+/, "")}`,
           }));
 
         setBanners(slides);

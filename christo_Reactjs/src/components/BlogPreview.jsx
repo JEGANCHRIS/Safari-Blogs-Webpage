@@ -1,10 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../styles/Ckeditor-styles.css";
-// import "../styles/Ckeditor-styles.css";
+import "ckeditor5/ckeditor5.css";
 // import "@ckeditor/ckeditor5-build-classic/build/content-styles.css";
-
+import "../styles/Ckeditor-styles.css";
 // import { Title, Meta, Link } from "react-head";
 import html2pdf from "html2pdf.js";
 import Download from "../assets/download-icon.svg";
@@ -18,8 +17,7 @@ function BlogPreview() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const API = import.meta.env.VITE_API_URL;
-        const res = await axios.get(`${API}/api/blog/${id}`);
+        const res = await axios.get(`http://localhost:3009/api/blog/${id}`);
         setBlog(res.data);
         console.log("Fetched blog:", res.data);
       } catch (err) {

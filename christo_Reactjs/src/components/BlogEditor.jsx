@@ -23,7 +23,7 @@ export default function BlogEditor({ editingBlog: editingBlogProp }) {
 
   useEffect(() => {
     let mounted = true;
-    fetch(`${import.meta.env.VITE_API_URL}/api/categories`)
+    fetch("http://localhost:3009/api/categories")
       .then((res) => res.json())
       .then((data) => {
         if (!mounted) return;
@@ -42,7 +42,7 @@ export default function BlogEditor({ editingBlog: editingBlogProp }) {
     let mounted = true;
     if (!blogId) return;
     setLoading(true);
-    fetch(`${import.meta.env.VITE_API_URL}/api/blog/${blogId}`)
+    fetch(`http://localhost:3009/api/blog/${blogId}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load blog");
         return res.json();
@@ -59,9 +59,8 @@ export default function BlogEditor({ editingBlog: editingBlogProp }) {
         const normalizeImage = (img) => {
           if (!img) return null;
           if (img.startsWith("http")) return img;
-          if (img.startsWith("/uploads/"))
-            return `${import.meta.env.VITE_API_URL}${img}`;
-          return `${import.meta.env.VITE_API_URL}/uploads/${img}`;
+          if (img.startsWith("/uploads/")) return `http://localhost:3009${img}`;
+          return `http://localhost:3009/uploads/${img}`;
         };
 
         setBannerPreview(normalizeImage(blog.bannerImage));
@@ -129,8 +128,8 @@ export default function BlogEditor({ editingBlog: editingBlogProp }) {
       setLoading(true);
       const token = localStorage.getItem("token");
       const url = blogId
-        ? `${import.meta.env.VITE_API_URL}/api/UpdateBlogs/${blogId}`
-        : `${import.meta.env.VITE_API_URL}/api/create-Blogs`;
+        ? `http://localhost:3009/api/UpdateBlogs/${blogId}`
+        : "http://localhost:3009/api/create-Blogs";
       const method = blogId ? "PUT" : "POST";
 
       const formData = new FormData();
@@ -183,7 +182,7 @@ export default function BlogEditor({ editingBlog: editingBlogProp }) {
             const data = new FormData();
             data.append("file", file);
 
-            fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
+            fetch("http://localhost:3009/api/uploads", {
               // 👈 match Express route
               method: "POST",
               body: data,
@@ -196,7 +195,7 @@ export default function BlogEditor({ editingBlog: editingBlogProp }) {
                 });
               })
               .catch((err) => reject(err));
-          }),
+          })
       );
     }
 

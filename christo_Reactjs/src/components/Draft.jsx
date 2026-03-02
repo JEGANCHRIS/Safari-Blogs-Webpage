@@ -24,13 +24,13 @@ const Draft = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/GetMyblogs/users`,
+        "http://localhost:3009/api/GetMyblogs/users",
         {
           headers: { Authorization: `Bearer ${token}` },
-        },
+        }
       );
       const draftBlogs = await res.data.filter(
-        (blog) => blog.isPublished === false,
+        (blog) => blog.isPublished === false
       );
       setDraft(draftBlogs);
     } catch (err) {
@@ -40,9 +40,7 @@ const Draft = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/categories`,
-        );
+        const res = await fetch("http://localhost:3009/api/categories");
         const data = await res.json();
         console.log("Fetched categories response:", data);
         setCategories(data.categories || data || []); // <-- be flexible
@@ -63,10 +61,10 @@ const Draft = () => {
     setCategory(blog.category?._id || blog.category); // if populated
     setEditingBlog(blog._id);
     if (blog.bannerImage) {
-      setBannerPreview(`${import.meta.env.VITE_API_URL}/${blog.bannerImage}`);
+      setBannerPreview(`http://localhost:3009/${blog.bannerImage}`);
     }
     if (blog.cardImage) {
-      setCardPreview(`${import.meta.env.VITE_API_URL}/${blog.cardImage}`);
+      setCardPreview(`http://localhost:3009/${blog.cardImage}`);
     }
     window.open(`/blog-editor?id=${blog._id}`, "_blank");
   };
@@ -75,8 +73,8 @@ const Draft = () => {
     try {
       const token = localStorage.getItem("token");
       const url = editingBlog
-        ? `${import.meta.env.VITE_API_URL}/api/UpdateBlogs/${editingBlog}`
-        : `${import.meta.env.VITE_API_URL}/api/create-Blogs`;
+        ? `http://localhost:3009/api/UpdateBlogs/${editingBlog}`
+        : "http://localhost:3009/api/create-Blogs";
 
       const method = editingBlog ? "PUT" : "POST";
 
@@ -127,14 +125,11 @@ const Draft = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/deleteBlog/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
+      await axios.delete(`http://localhost:3009/api/deleteBlog/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      );
+      });
       setMessage({ type: "success", text: "Blog deleted successfully!!" });
 
       setDraft((prevDraft) => prevDraft.filter((blog) => blog._id !== id));
@@ -162,9 +157,9 @@ const Draft = () => {
                     const cardImg = blog.cardImage
                       ? blog.cardImage.startsWith("http")
                         ? blog.cardImage
-                        : `${import.meta.env.VITE_API_URL}/${blog.cardImage.replace(
+                        : `http://localhost:3009/${blog.cardImage.replace(
                             /^\/+/,
-                            "",
+                            ""
                           )}`
                       : "https://via.placeholder.co/300x180?text=No+Image";
 

@@ -30,7 +30,7 @@ export function HeaderSection() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/categories`)
+      .get("http://localhost:3009/api/categories")
       .then((res) => {
         console.log("API response:", res.data);
         setCategories(res.data.categories);
@@ -85,7 +85,7 @@ export function HeaderSection() {
 
     try {
       const res = await axios.post(
-        "https://safari-blogs-webpage-2.onrender.com/api/login",
+        "http://localhost:3009/api/login",
         credinals
       );
       const token = res.data?.token;
@@ -129,7 +129,7 @@ export function HeaderSection() {
     }
     try {
       const res = await axios.post(
-        "https://safari-blogs-webpage-2.onrender.com/api/Create-Users",
+        "http://localhost:3009/api/Create-Users",
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
