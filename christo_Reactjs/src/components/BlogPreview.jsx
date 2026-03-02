@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "ckeditor5/ckeditor5.css";
+import "../styles/Ckeditor-styles";
 // import "@ckeditor/ckeditor5-build-classic/build/content-styles.css";
 import "../styles/ckeditor-styles.css";
 // import { Title, Meta, Link } from "react-head";
