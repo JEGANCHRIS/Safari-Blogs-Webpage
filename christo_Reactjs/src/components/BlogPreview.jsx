@@ -18,7 +18,8 @@ function BlogPreview() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:3009/api/blog/${id}`);
+        const API = import.meta.env.VITE_API_URL;
+        const res = await axios.get(`${API}/api/blog/${id}`);
         setBlog(res.data);
         console.log("Fetched blog:", res.data);
       } catch (err) {
