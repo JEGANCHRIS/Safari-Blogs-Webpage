@@ -28,6 +28,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+console.log("APP FILE EXECUTED");
+
 /** Auth */
 router.post("/login", validateLogin, rateLimit(), authCtrl.login);
 
