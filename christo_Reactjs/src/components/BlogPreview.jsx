@@ -4,7 +4,7 @@ import axios from "axios";
 import "../styles/Ckeditor-styles.css";
 // import "../styles/Ckeditor-styles.css";
 // import "@ckeditor/ckeditor5-build-classic/build/content-styles.css";
-import "../styles/ckeditor-styles.css";
+
 // import { Title, Meta, Link } from "react-head";
 import html2pdf from "html2pdf.js";
 import Download from "../assets/download-icon.svg";
