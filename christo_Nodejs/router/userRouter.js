@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Role = require("../model/RoleModels");
-const auth = require("../middleware/authMiddleware");
+const auth = require("../middleWare/authMiddleware");
 const { allow, roleIn } = require("../middleWare/Permissions");
 const rateLimit = require("../middleWare/rateLimiters");
 const {
