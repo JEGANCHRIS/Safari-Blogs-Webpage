@@ -27,10 +27,7 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-// for render
-app.get("/", (req, res) => {
-  res.send("Safari Blogs Backend is running 🚀");
-});
+
 /** Auth */
 router.post("/login", validateLogin, rateLimit(), authCtrl.login);
 

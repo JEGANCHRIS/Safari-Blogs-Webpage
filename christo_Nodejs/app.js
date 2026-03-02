@@ -24,6 +24,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// for render
+app.get("/", (req, res) => {
+  res.send("Safari Blogs Backend is running 🚀");
+});
+
 // Upload API for CKEditor
 app.post("/api/uploads", upload.single("file"), (req, res) => {
   if (!req.file) {
