@@ -1,0 +1,3873 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container {
+  width: 100%;
+  /* margin: 0px auto; */
+}
+button {
+  cursor: pointer;
+}
+a {
+  cursor: pointer;
+}
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: auto;
+}
+.page-wrapper::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    #6464644d 100%
+  );
+}
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: honeydew;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-logo {
+  height: 72px;
+  width: 75px;
+}
+.menu-box {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.menuBtn {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 120%;
+  color: dimgray;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+.menuBtn:hover {
+  color: #000000;
+}
+.menuBtn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #824026;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-in;
+}
+.menuBtn:hover::after {
+  transform: scaleX(1);
+}
+.logBtn {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 343px;
+}
+.Login,
+.NewRegister {
+  padding: 12px;
+  width: 160px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+  background-color: ivory;
+  border-radius: 8px;
+  color: dimgray;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.Login:hover {
+  background-color: #824026;
+  color: ivory;
+}
+.NewRegister:hover {
+  background-color: #824026;
+  color: ivory;
+}
+.LoginHeading {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 120%;
+}
+.RegHeading {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 120%;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 36px;
+}
+.regForm {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 36px;
+}
+.inputBars {
+  padding: 22px;
+  border: 0.1px solid dimgrey;
+  border-radius: 10px;
+  font-size: 22px;
+  outline-color: rgb(9, 75, 0);
+}
+.loginButton {
+  padding: 22px;
+  border: 0.01px solid black;
+  border-radius: 10px;
+  background: linear-gradient(to right, honeydew, ivory);
+  font-size: 22px;
+}
+.regButton {
+  padding: 22px;
+  border: 0.01px solid black;
+  border-radius: 10px;
+  background: linear-gradient(to right, honeydew, ivory);
+  font-size: 22px;
+}
+.loginButton:hover {
+  background: linear-gradient(to left, honeydew, ivory);
+}
+.newUser {
+  text-decoration: none;
+  color: dimgrey;
+  width: 160px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+}
+.alreadyAnUser {
+  text-decoration: none;
+  color: dimgrey;
+  width: 140px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+}
+.burgerMenu {
+  width: 32px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none;
+  background-color: transparent;
+  display: none;
+}
+.flex-burger {
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 56%;
+  right: -100%; /* hidden by default */
+  height: 100vh;
+  background: honeydew;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  padding: 20px;
+}
+.flex-burger.active {
+  right: 0px; /* slide in from right */
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-right: 42px;
+}
+.closeBtn {
+  margin-top: 16px;
+  width: 38px;
+  height: 46px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.bar,
+.cbar {
+  height: 3px;
+  background-color: ivory;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.bar1 {
+  transform: rotate(-45deg) translate(4px, -7px);
+}
+.bar2 {
+  transform: rotate(45deg) translate(-10px, -7px);
+}
+.b-menu-contents {
+  background-color: transparent;
+  width: 94%;
+  border-radius: 0px 0px 12px 12px;
+  padding: 0px 0px 20px 0px;
+  list-style: none;
+  text-align: right;
+  /* margin: 0 auto; */
+}
+.b-menu-contents ul {
+  list-style: none;
+}
+.burger-li {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 120%;
+  color: dimgrey;
+  padding: 20px 0px;
+  transition: 0.11s ease-in;
+}
+.burger-li:hover {
+  background-color: ivory;
+  border-radius: 8px;
+  padding-right: 16px;
+}
+.bannerSection {
+  width: 100%;
+  background-color: ivory;
+  /* background: linear-gradient(to left, ivory, honeydew); */
+  /* background-color: rgb(255, 255, 255); */
+  /* height: 1400px; */
+}
+.bannerSection .container {
+  width: 72%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  /* background-color: #999999; */
+}
+.bannerContent {
+  text-align: center;
+}
+.bannerText {
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 500;
+  color: dimgray;
+  /* color: #a35435; */
+  padding: 30px 0px 10px 0px;
+}
+.s-menu-list {
+  position: absolute;
+  background-color: honeydew;
+  border: 1px solid #ddd;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  z-index: 1000;
+  border-radius: 6px;
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.s-menu-list li {
+  padding: 5px 15px;
+  cursor: pointer;
+}
+.s-menu-list li:hover {
+  background: ivory;
+}
+.s-menu-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  color: dimgray;
+}
+.s-menu-list li:hover .s-menu-btn {
+  color: #000000;
+}
+.catBtn:hover .arrow,
+.menu-li:hover .arrow {
+  transform: rotate(180deg);
+}
+h1 {
+  font-size: 65px;
+  line-height: 120%;
+  font-weight: 700;
+  color: rgb(49, 49, 49);
+  color: #824026;
+  padding-bottom: 20px;
+}
+.bannerSub {
+  font-size: 32px;
+  line-height: 120%;
+  font-weight: 500;
+  color: dimgrey;
+  /* color: #a35435; */
+  width: 93%;
+  margin: 20px auto;
+}
+.categoryContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+.arrow {
+  transition: transform 0.2s ease-in;
+}
+.C-menu {
+  padding: 20px;
+  width: 180px;
+  border-radius: 8px 8px 0px 0px;
+  font-size: 24px;
+  background-color: honeydew;
+  margin-top: 40px;
+  border: 0.01px solid rgb(117, 117, 117);
+  border-bottom: none;
+  color: dimgrey;
+  position: relative;
+  background: linear-gradient(to bottom, rgb(222, 250, 222) 30%, ivory 100%);
+  border: none;
+  overflow: hidden;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.C-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  pointer-events: none;
+}
+.C-menu::after {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+.C-menu:hover {
+  background: linear-gradient(to bottom, honeydew 80%, ivory 100%);
+}
+.BlogBox {
+  border: 0.01px solid black;
+  border-radius: 10px;
+  background-color: ivory;
+  padding: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.BlogArea {
+  display: flex;
+  flex-direction: column;
+}
+.createBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.ck-toolbar {
+  font-size: 24px;
+}
+.newBlogCreateBtn {
+  /* margin-right: 10px; */
+  /* margin-top: 10px; */
+  font-size: 18px;
+  color: dimgrey;
+  background-color: honeydew;
+  border: 0.01px solid black;
+  padding: 14px 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.newBlogCreateBtn:hover {
+  background: linear-gradient(to right, honeydew, ivory);
+}
+
+.blogHead {
+  font-size: 32px;
+}
+.ck-sticky-panel__content {
+  border-radius: 4px 4px 0px 0px !important;
+}
+.ck-content {
+  border-radius: 0px 0px 4px 4px !important;
+  min-height: 100%;
+  padding-bottom: 100px !important;
+  height: auto;
+}
+.ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {
+  font-size: 24px;
+}
+.editorContainer {
+  height: 100%; /* must be set relative to modal body */
+  display: flex;
+  flex-direction: column;
+}
+.ck-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.ck-editor__main {
+  flex: 1;
+  display: flex;
+}
+
+.ck-editor__editable {
+  flex: 1 !important;
+  overflow-y: auto;
+  min-height: 32vh;
+  font-size: 24px;
+}
+.loginSuggest {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 120%;
+  color: dimgray;
+}
+.suggestContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.link {
+  text-decoration: none;
+  color: dimgrey;
+  cursor: pointer;
+}
+.link:hover {
+  color: #000000;
+}
+
+/* .editorContainer {
+  position: relative;
+}
+.ck-content{
+  position: absolute;
+} */
+
+.saveBtn {
+  padding: 22px;
+  background: linear-gradient(to left, honeydew, ivory);
+  border-radius: 4px;
+  border: none;
+  color: dimgray;
+  font-weight: 600;
+  font-size: 22px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.saveBtn:hover {
+  color: #000000;
+}
+.CancelBtn {
+  padding: 22px;
+  background: linear-gradient(to left, honeydew, ivory);
+  border-radius: 4px;
+  border: none;
+  font-size: 22px;
+  color: dimgray;
+  font-weight: 600;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.CancelBtn:hover {
+  color: #000000;
+}
+.cbox {
+  width: 180px;
+  font-size: 22px;
+  color: dimgrey;
+  display: flex;
+  align-items: center;
+}
+.checkBox {
+  margin-right: 6px;
+  width: 22px;
+  height: 22px;
+}
+.blogTitle {
+  padding: 22px;
+  font-size: 22px;
+  border: 0.1px solid #ccced1;
+  border-radius: 4px;
+  outline: 0.1px solid #ccced1;
+  color: dimgray;
+}
+.straightLine {
+  border: 0.1px solid #ccc;
+  height: 40px;
+}
+.straightLine1 {
+  border: 0.1px solid #ccc;
+  height: 40px;
+}
+.delBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.blogContent:hover .delIcon {
+  width: 30px;
+  height: 30px;
+}
+.dropbox {
+  border-radius: 4px;
+  border: 0.1px solid #ccced1;
+  outline: 0.1px solid #ccced1;
+  padding: 22px;
+  font-size: 22px;
+  color: dimgrey;
+  font-weight: 500;
+  line-height: 120%;
+}
+/* .BlogListBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+} */
+.BlogList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  transition: 0.2s ease-in-out;
+}
+.font-bold {
+  font-size: 32px;
+  text-decoration: none;
+  color: #824026;
+  font-weight: 600;
+  text-align: center;
+}
+.blogContent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 0.1px solid black;
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(to right, honeydew, ivory);
+  transition: 0.2s ease-in-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.blogContent:hover {
+  background: linear-gradient(to left, honeydew, ivory);
+  padding-left: 30px;
+}
+.editBtn {
+  background-color: transparent;
+  border: none;
+  width: 35px;
+}
+.blogContent:hover .editIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.msg {
+  color: crimson;
+  font-size: 24px;
+}
+.blogPreviewSection {
+  background-color: ivory;
+}
+.BlogEditorSection .container {
+  width: 90%;
+  margin: 0 auto;
+}
+.blogTab {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 80px;
+}
+.blogpreContent {
+  width: 72%;
+  margin: 0px auto;
+  margin-top: 0px;
+  padding: 50px 20px;
+  background-color: ivory;
+}
+.categoryName {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 120%;
+  color: dimgray;
+}
+.liner {
+  border: 1px solid rgb(224, 224, 224);
+  width: 30%;
+}
+.previewHead {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 120%;
+  margin-top: 10px;
+}
+.prose {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 140%;
+  margin-top: 20px;
+}
+.publishedPage {
+  font-size: 20px;
+  font-weight: 600;
+  color: dimgrey;
+  margin-top: 20px;
+}
+.profile-title {
+  font-size: 32px;
+  color: #000000;
+  font-weight: 600;
+  line-height: 135%;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+.profileinfo {
+  font-size: 24px;
+  font-weight: 600;
+  color: dimgray;
+  line-height: 120%;
+}
+.profilecontent {
+  font-size: 20px;
+  color: dimgray;
+  line-height: 120%;
+  font-weight: 400;
+}
+.logoutBtn {
+  padding: 12px;
+  font-size: 24px;
+  font-weight: 400;
+  background: linear-gradient(to left, honeydew, ivory);
+  border: 0.01px solid black;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+.noBlogs {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 120%;
+  color: #824026;
+}
+.lionImg {
+  opacity: 35%;
+}
+.UserManagementSection {
+  background-color: ivory;
+}
+.usermanagementContent {
+  width: 72%;
+  margin: 0px auto;
+  margin-top: 0px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: ivory;
+}
+.umHeading {
+  text-align: center;
+  padding-bottom: 40px;
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 120%;
+  color: #824026;
+}
+.UserTable {
+  width: 100%;
+}
+th {
+  padding-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: dimgray;
+}
+td {
+  text-align: center;
+  padding: 20px 0px;
+  color: dimgray;
+  font-size: 20px;
+  border: 0px solid dimgray;
+  width: 9%;
+  border-radius: 4px;
+}
+.userName {
+  background-color: honeydew;
+}
+.userRole {
+  width: 10%;
+  background-color: honeydew;
+}
+
+.modifyBtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.btnFlex {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.CrossIcon {
+  width: 20px;
+  height: 20px;
+}
+.editInputName {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  text-align: center;
+  width: 48%;
+}
+.editInputMail {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  padding: 0px;
+  text-align: center;
+  width: 74%;
+}
+.caution {
+  font-size: 24px;
+  font-weight: 600;
+  background: linear-gradient(to left, honeydew, ivory);
+  border: 0.01px solid black;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 14px 24px;
+}
+.flexcaution {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.cautionTxt {
+  font-size: 24px;
+  color: dimgray;
+  font-weight: 600;
+  margin-top: 20px;
+}
+.DraftSection {
+  background-color: ivory;
+}
+.DraftSection .container {
+  width: 72%;
+  margin: 0 auto;
+}
+/* .DraftBox {
+  border: 0.01px solid black;
+  border-radius: 10px;
+  background-color: ivory;
+  padding: 12px;
+} */
+.blog-lists {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.passwordBox {
+  border: 0.1px solid dimgray;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.pass {
+  border: none;
+  outline: none;
+  width: 70%;
+}
+.eyebtn {
+  background-color: transparent;
+  border: none;
+  padding: 0px 14px;
+  margin: 10px 0px;
+}
+.DraftContent {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+.createFlex {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0px;
+}
+.create {
+  padding: 14px;
+  background: linear-gradient(to left, honeydew, ivory);
+  border: 0.1px solid black;
+  border-radius: 10px;
+  font-size: 20px;
+}
+.numBtn {
+  background-color: transparent;
+  border: 0.1px solid #ccc;
+  border-radius: 5px;
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+  cursor: pointer;
+}
+.numBtn.active {
+  background: linear-gradient(to top, honeydew, ivory);
+  font-weight: 600;
+}
+.pageiniation {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+.accountBtn {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  padding: 15px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  color: dimgrey;
+}
+.accountBtn:hover {
+  color: #000000;
+}
+
+.accountBtn::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #824026;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-in;
+}
+
+.accountBtn:hover::after {
+  transform: scaleX(1);
+}
+.contactUs {
+  background-color: ivory;
+}
+.contactUs.container {
+  width: 72%;
+}
+.formContainer {
+  width: 72%;
+  margin: 0px auto;
+  padding-top: 80px;
+}
+.formContent {
+  width: 65%;
+}
+.messageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 80px;
+}
+.label {
+  font-size: 24px;
+  color: dimgray;
+  font-weight: 600;
+  line-height: 120%;
+}
+.Msginput {
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #824026;
+
+  outline: none;
+}
+.MsgField {
+  background-color: ghostwhite;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 10px 180px 10px;
+  font-size: 20px;
+}
+.MsgSubmitBtn {
+  font-size: 24px;
+  padding: 20px 30px;
+  width: 166px;
+  color: rgb(82, 82, 82);
+  /* border: 0.01px solid black; */
+  border: none;
+  /* background-color: honeydew; */
+  border-radius: 10px;
+  font-weight: 500;
+  background: linear-gradient(to bottom, skyBlue 0%, #deffde 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.MsgSubmitBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  pointer-events: none;
+}
+.MsgSubmitBtn::after {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+.MsgSubmitBtn:hover {
+  background: linear-gradient(to top, skyBlue 0%, #deffde 100%);
+  color: #000000;
+}
+.formHeader {
+  font-size: 42px;
+  color: #824026;
+  margin-bottom: 20px;
+}
+.fomrimgbox {
+  width: 30%;
+}
+.formimg {
+  width: 100%;
+  opacity: 40%;
+}
+.FooterSection {
+  background-color: #824026;
+  color: ghostwhite;
+}
+.FooterSection .container {
+  width: 72%;
+  margin: 0 auto;
+}
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.CopyBox {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.f-content {
+  width: 600px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 130%;
+}
+.CopyRights {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 130%;
+}
+.FooterIcons {
+  display: flex;
+  gap: 20px;
+}
+.mediaBtn {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+}
+
+.publishedPage {
+  font-size: 24px;
+}
+.msg {
+  font-size: 24px;
+}
+.bannerImgBox {
+  display: flex;
+  flex-direction: column;
+}
+.cardImgBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.blogLabel input[type="file"] {
+  display: none;
+}
+.blogLabel {
+  padding: 22px 20px;
+  background-color: honeydew;
+  color: dimgray;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 600;
+  transition: 0.3s ease-in;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.blogLabel:hover {
+  background: linear-gradient(to left, honeydew 0%, ivory 100%);
+  color: #000000;
+  padding-left: 35px;
+}
+
+.bannerImgUpload {
+  font-size: 24px;
+}
+.cardImgUpload {
+  font-size: 24px;
+}
+#file-upload-button {
+  background-color: honeydew;
+}
+.BlogBtnFlex {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+.removeBtn {
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+.removeFlex {
+  display: flex;
+  justify-content: end;
+}
+.card-image-preview {
+  width: 40%;
+  border-radius: 6px;
+}
+.banner-img-preview {
+  border-radius: 6px;
+}
+
+.bannerImg {
+  object-fit: cover;
+}
+.swiper-wrapper {
+  height: 800px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: honeydew !important;
+}
+.swiper-pagination-bullet {
+  background-color: honeydew !important;
+  width: 30px !important;
+  height: 2px !important;
+}
+
+/* blogList */
+.BlogListGrid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+
+  margin-top: 32px;
+}
+
+.blogCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.blogCard:hover {
+  transform: translateY(-5px);
+  background-color: honeydew;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.blogCardImage {
+  object-fit: cover;
+  transition: 0.2s ease-in-out;
+}
+
+.blogCardImage:hover {
+  width: 110%;
+}
+
+.blogCardContent {
+  padding: 16px;
+  text-align: center;
+}
+
+.blogCardTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 8px 0;
+  color: #333;
+}
+
+.blogCardMeta {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.bannerOverlay {
+  position: relative;
+  z-index: 2;
+}
+
+.bannerCaption {
+  position: absolute;
+  top: 130px;
+  right: 150px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 75px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-align: left;
+  z-index: 4;
+}
+.bannerCaption::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: dimgray;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-in;
+}
+.bannerCaption:hover::after {
+  transform: scaleX(1);
+}
+.image img {
+  max-width: 40% !important;
+  height: auto;
+}
+.previewHead {
+  color: #824026;
+}
+.downloadBox {
+  width: 72%;
+  margin: 0 auto;
+  padding-bottom: 22px;
+}
+.downloadBtn {
+  background-color: honeydew;
+  color: dimgray;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 180px;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  transition: 0.2s ease-in;
+}
+.downloadBtn:hover {
+  background: linear-gradient(to right, honeydew, ivory);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  color: #000000;
+  padding: 12px 14px;
+}
+.BannerSliderSection {
+  background-color: ivory;
+}
+
+@media screen and (max-width: 320px) {
+  .menu,
+  .logBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+  }
+  .main-logo {
+    width: 42px !important;
+    height: 40px;
+  }
+  .burger-li {
+    font-size: 14px;
+    padding: 14px 0px;
+  }
+  .bannerSub {
+    width: 220.391px;
+    font-size: 16px;
+    line-height: 140%;
+  }
+  h1 {
+    font-size: 32px;
+    padding-bottom: 10px;
+  }
+  .bannerText {
+    font-size: 12px;
+  }
+  .C-menu {
+    font-size: 12px;
+    padding: 14px;
+  }
+  .categoryContainer {
+    justify-content: center;
+  }
+  .C-menu {
+    width: 90px;
+    padding: 10px;
+  }
+  .BlogBox {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .BlogList {
+    gap: 10px;
+  }
+  .font-bold {
+    font-size: 12px;
+  }
+  .newBlogCreateBtn {
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  .formHeader {
+    font-size: 22px;
+  }
+  .label {
+    font-size: 14px;
+  }
+  .Msginput {
+    font-size: 12px;
+  }
+  .MsgField {
+    font-size: 12px;
+  }
+  .MsgSubmitBtn {
+    font-size: 14px;
+    padding: 12px 24px;
+    width: 100px;
+  }
+  .blogContent {
+    gap: 8px;
+    padding: 4px;
+    border-radius: 4px;
+  }
+  .formContent {
+    width: 100%;
+  }
+  .editBtn,
+  .delBtn {
+    width: 14px !important;
+  }
+  .editIcon,
+  .delIcon {
+    width: 12px !important;
+    height: 12px;
+  }
+  .blogContent:hover .editIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .blogContent:hover .delIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .formContainer {
+    padding-top: 5px;
+  }
+  .straightLine {
+    height: 30px;
+  }
+  .messageForm {
+    gap: 14px;
+  }
+  .menuBtn {
+    font-size: 14px;
+  }
+  .navBar {
+    padding: 5px 40px;
+  }
+  .burgerMenu {
+    width: 25px;
+    height: 20px;
+  }
+  .f-content {
+    font-size: 12px;
+    width: 220px;
+  }
+  .footerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .SocialMedia {
+    width: 36px;
+    height: 36px;
+  }
+  .CopyRights {
+    font-size: 11px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 32px;
+    padding-bottom: 0px;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .createFlex {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0px;
+  }
+  .straightLine1 {
+    display: none;
+  }
+  .btnFlex {
+    flex-direction: column;
+  }
+  .create {
+    font-size: 11px;
+    width: 260px;
+  }
+  .modifyBtn {
+    width: 45px;
+  }
+  .tableRows {
+    font-size: 11px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 11px;
+  }
+  .numBtn {
+    font-size: 11px;
+  }
+  .usermanagementContent {
+    width: 100%;
+  }
+  .penIcon,
+  .dustBin {
+    width: 16px;
+    height: 16px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 14px;
+  }
+  .previewHead {
+    font-size: 34px;
+    color: #824026;
+  }
+  strong {
+    font-size: 24px;
+  }
+  .prose {
+    font-size: 12px;
+  }
+  .publishedPage {
+    font-size: 12px;
+  }
+  .msg {
+    font-size: 11px;
+  }
+  .swiper {
+    height: 180px !important;
+  }
+  .bannerCaption {
+    font-size: 32px;
+    top: 8px;
+    right: 15px;
+  }
+  .blogCardTitle {
+    font-size: 12px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+  }
+  .blogCardContent {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+
+  .FooterIcons {
+    gap: 0px;
+  }
+  .closeBtn {
+    width: 25px !important;
+    height: 20px;
+  }
+  .flex-burger.active {
+    padding-right: 20px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 20px !important;
+  }
+  .blogHead {
+    font-size: 20px;
+  }
+  .blogLabel {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .cbox {
+    font-size: 14px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .removeIcon {
+    width: 20px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 14px;
+  }
+  .downloadBtn {
+    width: 140px;
+  }
+  .previewHead {
+    font-size: 32px;
+  }
+  .downloadBtn {
+    width: 125px;
+  }
+  .regForm,
+  .loginForm {
+    gap: 10px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 22px;
+  }
+  .inputBars {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 380px) {
+  .menu,
+  .logBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+  }
+  .main-logo {
+    width: 48px !important;
+    height: 46px;
+  }
+  .burger-li {
+    font-size: 14px;
+    padding: 14px 0px;
+  }
+  .bannerSub {
+    width: 220.391px;
+    font-size: 16px;
+    line-height: 140%;
+  }
+  h1 {
+    font-size: 32px;
+    padding-bottom: 10px;
+  }
+  .bannerText {
+    font-size: 12px;
+  }
+  .C-menu {
+    font-size: 12px;
+    padding: 14px;
+  }
+  .categoryContainer {
+    justify-content: center;
+  }
+  .C-menu {
+    width: 90px;
+    padding: 10px;
+  }
+  .BlogBox {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .font-bold {
+    font-size: 12px;
+  }
+  .newBlogCreateBtn {
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  .formHeader {
+    font-size: 22px;
+  }
+  .label {
+    font-size: 14px;
+  }
+  .Msginput {
+    font-size: 12px;
+  }
+  .MsgField {
+    font-size: 12px;
+  }
+  .MsgSubmitBtn {
+    font-size: 14px;
+    padding: 12px 24px;
+    width: 100px;
+  }
+  .blogContent {
+    gap: 8px;
+    padding: 4px;
+    border-radius: 4px;
+  }
+  .BlogList {
+    gap: 10px;
+  }
+  .formContent {
+    width: 100%;
+  }
+  .editBtn,
+  .delBtn {
+    width: 14px !important;
+  }
+  .editIcon,
+  .delIcon {
+    width: 12px !important;
+    height: 12px;
+  }
+  .blogContent:hover .editIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .blogContent:hover .delIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .formContainer {
+    padding-top: 5px;
+  }
+  .straightLine {
+    height: 28px;
+  }
+  .messageForm {
+    gap: 14px;
+  }
+  .menuBtn {
+    font-size: 14px;
+  }
+  .navBar {
+    padding: 5px 40px;
+  }
+  .burgerMenu {
+    width: 25px;
+    height: 20px;
+  }
+  .f-content {
+    font-size: 12px;
+    width: 220px;
+  }
+  .footerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .SocialMedia {
+    width: 36px;
+    height: 36px;
+  }
+  .CopyRights {
+    font-size: 11px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 32px;
+    padding-bottom: 0px;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .createFlex {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0px;
+  }
+  .straightLine1 {
+    display: none;
+  }
+  .btnFlex {
+    flex-direction: column;
+  }
+  .create {
+    font-size: 11px;
+    width: 260px;
+  }
+  .modifyBtn {
+    width: 45px;
+  }
+  .tableRows {
+    font-size: 11px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 11px;
+  }
+  .numBtn {
+    font-size: 11px;
+  }
+  .usermanagementContent {
+    width: 100%;
+  }
+  .penIcon,
+  .dustBin {
+    width: 16px;
+    height: 16px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 14px;
+  }
+  .previewHead {
+    font-size: 34px;
+  }
+  strong {
+    font-size: 24px;
+  }
+  .prose {
+    font-size: 12px;
+  }
+  .publishedPage {
+    font-size: 12px;
+  }
+  .msg {
+    font-size: 11px;
+  }
+
+  .swiper {
+    height: 180px !important;
+  }
+  .bannerCaption {
+    font-size: 32px;
+    top: 8px;
+    right: 15px;
+  }
+  .blogCardTitle {
+    font-size: 12px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+  }
+  .blogCardContent {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+  .FooterIcons {
+    gap: 0px;
+  }
+  .closeBtn {
+    width: 25px !important;
+    height: 20px;
+  }
+  .flex-burger.active {
+    padding-right: 20px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 20px !important;
+  }
+
+  .blogHead {
+    font-size: 20px;
+  }
+  .blogLabel {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .cbox {
+    font-size: 14px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .removeIcon {
+    width: 20px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 14px;
+  }
+  .previewHead {
+    font-size: 34px;
+  }
+  .downloadBtn {
+    width: 125px;
+  }
+
+  .regForm,
+  .loginForm {
+    gap: 10px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 22px;
+  }
+  .inputBars {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 381px) and (max-width: 426px) {
+  .menu,
+  .logBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+  }
+  .main-logo {
+    width: 48px !important;
+    height: 46px;
+  }
+  .burger-li {
+    font-size: 14px;
+    padding: 14px 0px;
+  }
+  .bannerSub {
+    width: 267.391px;
+    font-size: 19px;
+    line-height: 140%;
+  }
+  h1 {
+    font-size: 40px;
+    padding-bottom: 10px;
+  }
+  .bannerText {
+    font-size: 14px;
+  }
+  .C-menu {
+    font-size: 12px;
+    padding: 14px;
+  }
+  .categoryContainer {
+    justify-content: center;
+  }
+  .C-menu {
+    width: 100px;
+    padding: 10px;
+  }
+  .BlogBox {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .blogList {
+    gap: 10px;
+  }
+  .font-bold {
+    font-size: 12px;
+  }
+  .newBlogCreateBtn {
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  .formHeader {
+    font-size: 22px;
+  }
+  .label {
+    font-size: 14px;
+  }
+  .Msginput {
+    font-size: 12px;
+  }
+  .MsgField {
+    font-size: 12px;
+  }
+  .MsgSubmitBtn {
+    font-size: 14px;
+    padding: 12px 24px;
+    width: 100px;
+  }
+  .blogContent {
+    gap: 8px;
+    padding: 4px;
+    border-radius: 4px;
+  }
+  .BlogList {
+    gap: 10px;
+  }
+  .formContent {
+    width: 100%;
+  }
+  .editBtn,
+  .delBtn {
+    width: 14px;
+  }
+  .editIcon,
+  .delIcon {
+    width: 12px !important;
+    height: 12px;
+  }
+  .blogContent:hover .editIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .blogContent:hover .delIcon {
+    width: 14px;
+    height: 14px;
+  }
+  .formContainer {
+    padding-top: 5px;
+  }
+  .straightLine {
+    height: 30px;
+  }
+  .messageForm {
+    gap: 16px;
+  }
+  .menuBtn {
+    font-size: 14px;
+  }
+  .navBar {
+    padding: 6px 40px;
+  }
+  .burgerMenu {
+    width: 25px;
+    height: 20px;
+  }
+  .f-content {
+    font-size: 12px;
+    width: 220px;
+  }
+  .footerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .SocialMedia {
+    width: 36px;
+    height: 36px;
+  }
+  .CopyRights {
+    font-size: 12px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 38px;
+    padding-bottom: 5px;
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .createFlex {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0px;
+  }
+  .straightLine1 {
+    display: none;
+  }
+  .btnFlex {
+    flex-direction: column;
+  }
+  .create {
+    font-size: 15px;
+    width: 300px;
+  }
+  .tableRows {
+    font-size: 15px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 14px;
+  }
+  .numBtn {
+    font-size: 14px;
+  }
+  .usermanagementContent {
+    width: 100%;
+  }
+  .penIcon,
+  .dustBin {
+    width: 20px;
+    height: 20px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 14px;
+  }
+  .previewHead {
+    font-size: 34px;
+  }
+  strong {
+    font-size: 24px;
+  }
+  .prose {
+    font-size: 12px;
+  }
+  .publishedPage {
+    font-size: 12px;
+  }
+  .msg {
+    font-size: 12px;
+  }
+
+  .swiper {
+    height: 200px !important;
+  }
+  .bannerCaption {
+    font-size: 34px;
+    top: 8px;
+    right: 15px;
+  }
+  .blogCardTitle {
+    font-size: 14px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+  }
+  .blogCardContent {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 22px !important;
+  }
+
+  .blogHead {
+    font-size: 22px;
+  }
+  .blogLabel {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .cbox {
+    font-size: 14px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 14px;
+    padding: 16px 14px;
+  }
+  .removeIcon {
+    width: 22px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 14px;
+  }
+  .downloadBtn {
+    width: 130px;
+  }
+  .previewHead {
+    font-size: 34px;
+  }
+  .regForm,
+  .loginForm {
+    gap: 10px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 22px;
+  }
+  .inputBars {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 600px) {
+  .menu,
+  .logBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+  }
+  .main-logo {
+    width: 52px !important;
+    height: 48px;
+  }
+  .burger-li {
+    font-size: 16px;
+    padding: 16px 0px;
+  }
+  .bannerSub {
+    width: 277.391px;
+    font-size: 20px;
+    line-height: 140%;
+  }
+  h1 {
+    font-size: 44px;
+  }
+  .bannerText {
+    font-size: 15px;
+  }
+  .C-menu {
+    font-size: 15px;
+  }
+  .categoryContainer {
+    justify-content: center;
+  }
+  .C-menu {
+    width: 142px;
+    padding: 10px;
+  }
+  .BlogBox {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .font-bold {
+    font-size: 15px;
+  }
+  .newBlogCreateBtn {
+    font-size: 15px;
+  }
+  .formHeader {
+    font-size: 28px;
+  }
+  .label {
+    font-size: 18px;
+  }
+  .Msginput {
+    font-size: 15px;
+  }
+  .MsgField {
+    font-size: 15px;
+  }
+  .MsgSubmitBtn {
+    font-size: 18px;
+    padding: 16px 24px;
+    width: 130px;
+  }
+  .blogContent {
+    gap: 8px;
+    padding: 10px;
+  }
+  .formContent {
+    width: 100%;
+  }
+  .editBtn,
+  .delBtn {
+    width: 20px;
+  }
+  .editIcon,
+  .delIcon {
+    width: 20px;
+    height: 20px;
+  }
+  .blogContent:hover .editIcon {
+    width: 22px;
+    height: 22px;
+  }
+  .blogContent:hover .delIcon {
+    width: 22px;
+    height: 22px;
+  }
+  .formContainer {
+    padding-top: 15px;
+  }
+  .messageForm {
+    gap: 18px;
+  }
+  .menuBtn {
+    font-size: 16px;
+  }
+  .navBar {
+    padding: 8px 40px;
+  }
+  .burgerMenu {
+    width: 25px;
+    height: 20px;
+  }
+  .f-content {
+    font-size: 15px;
+    width: 250px;
+  }
+  .footerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .SocialMedia {
+    width: 40px;
+    height: 40px;
+  }
+  .CopyRights {
+    font-size: 15px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 38px;
+    padding-bottom: 20px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .createFlex {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 35px 0px;
+  }
+  .straightLine1 {
+    display: none;
+  }
+  .btnFlex {
+    flex-direction: column;
+  }
+  .create {
+    font-size: 16px;
+    width: 300px;
+  }
+  .tableRows {
+    font-size: 16px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 15px;
+  }
+  .numBtn {
+    font-size: 15px;
+  }
+  .usermanagementContent {
+    width: 100%;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 16px;
+  }
+  .previewHead {
+    font-size: 36px;
+  }
+  strong {
+    font-size: 26px;
+  }
+  .prose {
+    font-size: 14px;
+  }
+  .publishedPage {
+    font-size: 14px;
+  }
+  .msg {
+    font-size: 14px;
+  }
+
+  .swiper {
+    height: 230px !important;
+  }
+  .bannerCaption {
+    font-size: 36px;
+    top: 8px;
+    right: 15px;
+  }
+  .blogCardTitle {
+    font-size: 16px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(284px, 1fr));
+  }
+  .blogCardContent {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 24px !important;
+  }
+
+  .blogHead {
+    font-size: 24px;
+  }
+  .blogLabel {
+    font-size: 16px;
+    padding: 18px 16px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 16px;
+    padding: 18px 16px;
+  }
+  .cbox {
+    font-size: 16px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 16px;
+    padding: 18px 16px;
+  }
+  .removeIcon {
+    width: 24px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 16px;
+  }
+  .downloadBtn {
+    width: 140px;
+  }
+  .previewHead {
+    font-size: 38px;
+  }
+  .regForm,
+  .loginForm {
+    gap: 14px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 24px;
+  }
+  .inputBars {
+    padding: 14px;
+    font-size: 15px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 14px;
+    font-size: 15px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .menu,
+  .logBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+  }
+  .main-logo {
+    width: 56px !important;
+    height: 52px;
+  }
+  .bannerSub {
+    width: 277.391px;
+    font-size: 22px;
+    line-height: 140%;
+  }
+  h1 {
+    font-size: 50px;
+  }
+  .bannerText {
+    font-size: 16px;
+  }
+  .C-menu {
+    font-size: 16px;
+  }
+  .categoryContainer {
+    justify-content: center;
+  }
+  .C-menu {
+    width: 184px;
+  }
+  .BlogBox {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .font-bold {
+    font-size: 24px;
+  }
+  .newBlogCreateBtn {
+    font-size: 16px;
+  }
+  .formHeader {
+    font-size: 34px;
+  }
+  .label {
+    font-size: 20px;
+  }
+  .Msginput {
+    font-size: 17px;
+  }
+  .MsgField {
+    font-size: 17px;
+  }
+  .MsgSubmitBtn {
+    font-size: 20px;
+    padding: 18px 30px;
+  }
+  .blogContent {
+    gap: 10px;
+  }
+  .formContent {
+    width: 100%;
+  }
+  .formContainer {
+    padding-top: 25px;
+  }
+  .menuBtn {
+    font-size: 18px;
+  }
+  .navBar {
+    padding: 12px 40px;
+  }
+  .f-content {
+    font-size: 16px;
+    width: 300px;
+  }
+  .footerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .SocialMedia {
+    width: 42px;
+    height: 42px;
+  }
+  .CopyRights {
+    font-size: 16px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 44px;
+    padding-bottom: 20px;
+    width: 66%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .createFlex {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .straightLine1 {
+    display: none;
+  }
+  .btnFlex {
+    flex-direction: column;
+  }
+  .create {
+    font-size: 18px;
+    width: 400px;
+  }
+  .tableRows {
+    font-size: 18px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 16px;
+  }
+  .numBtn {
+    font-size: 16px;
+  }
+  .usermanagementContent {
+    width: 100%;
+  }
+  .panel.small {
+    width: 400px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 18px;
+  }
+  .previewHead {
+    font-size: 38px;
+  }
+  strong {
+    font-size: 28px;
+  }
+  .prose {
+    font-size: 16px;
+  }
+  .publishedPage {
+    font-size: 16px;
+  }
+  .msg {
+    font-size: 16px;
+  }
+
+  .swiper {
+    height: 340px !important;
+  }
+  .bannerCaption {
+    font-size: 48px;
+    top: 8px;
+    right: 16px;
+  }
+  .blogCardTitle {
+    font-size: 20px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .blogCardContent {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 28px !important;
+  }
+
+  .blogHead {
+    font-size: 27px;
+  }
+  .blogLabel {
+    font-size: 21px;
+    padding: 20px 18px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 21px;
+    padding: 20px 18px;
+  }
+  .cbox {
+    font-size: 21px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 21px;
+    padding: 20px 18px;
+  }
+
+  .removeIcon {
+    width: 26px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 21px;
+  }
+  .downloadBtn {
+    width: 170px;
+  }
+  .previewHead {
+    font-size: 42px;
+  }
+
+  .regForm,
+  .loginForm {
+    gap: 16px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 26px;
+  }
+  .inputBars {
+    padding: 16px;
+    font-size: 16px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 16px;
+    font-size: 16px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  .menu,
+  .logBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+  }
+  .main-logo {
+    width: 56px !important;
+    height: 52px;
+  }
+  .bannerSub {
+    width: 67%;
+    font-size: 24px;
+    line-height: 140%;
+  }
+  h1 {
+    font-size: 52px;
+  }
+  .bannerText {
+    font-size: 18px;
+  }
+  .C-menu {
+    font-size: 18px;
+  }
+  .categoryContainer {
+    justify-content: center;
+  }
+  .C-menu {
+    width: 140px;
+  }
+  .font-bold {
+    font-size: 26px;
+  }
+  .newBlogCreateBtn {
+    font-size: 18px;
+  }
+  .formHeader {
+    font-size: 36px;
+  }
+  .label {
+    font-size: 21px;
+  }
+  .Msginput {
+    font-size: 18px;
+  }
+  .MsgField {
+    font-size: 18px;
+  }
+  .MsgSubmitBtn {
+    font-size: 21px;
+    padding: 18px 30px;
+  }
+  .formContainer {
+    padding-top: 50px;
+  }
+  .menuBtn {
+    font-size: 20px;
+  }
+  .f-content {
+    font-size: 18px;
+    width: 500px;
+  }
+  .footerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .SocialMedia {
+    width: 44px;
+    height: 44px;
+  }
+  .CopyRights {
+    font-size: 18px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 50px;
+  }
+  .create {
+    font-size: 18px;
+  }
+  .tableRows {
+    font-size: 18px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 16px;
+  }
+  .numBtn {
+    font-size: 16px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 19px;
+  }
+  .previewHead {
+    font-size: 40px;
+  }
+  strong {
+    font-size: 29px;
+  }
+  .prose {
+    font-size: 17px;
+  }
+  .publishedPage {
+    font-size: 17px;
+  }
+  .msg {
+    font-size: 17px;
+  }
+
+  .swiper {
+    height: 420px !important;
+  }
+  .bannerCaption {
+    font-size: 56px;
+    top: 12px;
+    right: 30px;
+  }
+  .blogCardTitle {
+    font-size: 22px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(254px, 1fr));
+  }
+  .blogCardContent {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 32px !important;
+  }
+
+  .blogHead {
+    font-size: 26px;
+  }
+  .blogLabel {
+    font-size: 20px;
+    padding: 19px 17px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 20px;
+    padding: 19px 17px;
+  }
+  .cbox {
+    font-size: 20px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 20px;
+    padding: 19px 17px;
+  }
+  .removeIcon {
+    width: 28px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 20px;
+  }
+  .previewHead {
+    font-size: 44px;
+  }
+  .regForm,
+  .loginForm {
+    gap: 16px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 28px;
+  }
+  .inputBars {
+    padding: 18px;
+    font-size: 16px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 18px;
+    font-size: 16px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  .menu,
+  .logBtn {
+    display: none;
+  }
+  .burgerMenu {
+    display: flex;
+  }
+  .bannerSub {
+    width: 81%;
+    font-size: 30px;
+    line-height: 140%;
+  }
+  h1 {
+    font-size: 62px;
+  }
+  .bannerText {
+    font-size: 22px;
+  }
+  .C-menu {
+    font-size: 22px;
+  }
+  .categoryContainer {
+    justify-content: center;
+  }
+  .font-bold {
+    font-size: 30px;
+  }
+  .newBlogCreateBtn {
+    font-size: 22px;
+  }
+  .formHeader {
+    font-size: 40px;
+  }
+  .label {
+    font-size: 23px;
+  }
+  .Msginput {
+    font-size: 20px;
+  }
+  .MsgField {
+    font-size: 20px;
+  }
+  .MsgSubmitBtn {
+    font-size: 23px;
+    padding: 18px 30px;
+  }
+  .formContainer {
+    padding-top: 65px;
+  }
+  .menuBtn {
+    font-size: 22px;
+  }
+  .f-content {
+    font-size: 20px;
+    width: 500px;
+  }
+  .footerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .SocialMedia {
+    width: 44px;
+    height: 44px;
+  }
+  .CopyRights {
+    font-size: 20px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 56px;
+  }
+  .create {
+    font-size: 22px;
+  }
+  .tableRows {
+    font-size: 22px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 19px;
+  }
+  .numBtn {
+    font-size: 19px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 23px;
+  }
+  .previewHead {
+    font-size: 42px;
+  }
+  strong {
+    font-size: 30px;
+  }
+  .prose {
+    font-size: 20px;
+  }
+  .publishedPage {
+    font-size: 20px;
+  }
+  .msg {
+    font-size: 20px;
+  }
+
+  .swiper {
+    height: 560px !important;
+  }
+  .bannerCaption {
+    font-size: 56px;
+    top: 12px;
+    right: 32px;
+  }
+  .blogCardTitle {
+    font-size: 22px;
+  }
+  .blogCardContent {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 40px !important;
+  }
+
+  .blogHead {
+    font-size: 30px;
+  }
+  .blogLabel {
+    font-size: 22px;
+    padding: 21px 19px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 22px;
+    padding: 21px 19px;
+  }
+  .cbox {
+    font-size: 22px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 22px;
+    padding: 21px 19px;
+  }
+  .removeIcon {
+    width: 30px !important;
+  }
+
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 22px;
+  }
+  .previewHead {
+    font-size: 46px;
+  }
+  .regForm,
+  .loginForm {
+    gap: 18px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 28px;
+  }
+  .inputBars {
+    padding: 18px;
+    font-size: 18px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 18px;
+    font-size: 18px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .menuBtn {
+    font-size: 16px;
+  }
+  .menu-box {
+    gap: 18px;
+  }
+  .logBtn {
+    width: 275px;
+  }
+  .Login,
+  .NewRegister {
+    font-size: 16px;
+    width: 112px;
+    padding: 12px;
+  }
+  .bannerText {
+    font-size: 16px;
+  }
+  .bannerSub {
+    font-size: 24px;
+  }
+  h1 {
+    font-size: 52px;
+  }
+  .C-menu {
+    font-size: 16px;
+  }
+  .font-bold {
+    font-size: 24px;
+  }
+  .newBlogCreateBtn {
+    font-size: 16px;
+  }
+  .formHeader {
+    font-size: 32px;
+  }
+  .label {
+    font-size: 19px;
+  }
+  .Msginput {
+    font-size: 16px;
+  }
+  .MsgField {
+    font-size: 16px;
+  }
+  .MsgSubmitBtn {
+    font-size: 19px;
+    padding: 18px 24px;
+  }
+  .f-content {
+    font-size: 16px;
+    width: 420px;
+  }
+  .SocialMedia {
+    width: 44px;
+    height: 44px;
+  }
+  .CopyRights {
+    font-size: 16px;
+  }
+
+  /* userManagement */
+  .umHeading {
+    font-size: 50px;
+  }
+  .create {
+    font-size: 16px;
+  }
+  .tableRows {
+    font-size: 16px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 15px;
+  }
+  .numBtn {
+    font-size: 15px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 16px;
+  }
+  .previewHead {
+    font-size: 42px;
+  }
+  strong {
+    font-size: 28px;
+  }
+  .prose {
+    font-size: 16px;
+  }
+  .publishedPage {
+    font-size: 16px;
+  }
+  .msg {
+    font-size: 16px;
+  }
+  .bannerCaption {
+    font-size: 62px;
+    top: 20px;
+    right: 48px;
+  }
+  .blogCardTitle {
+    font-size: 19px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(163.5px, 1fr));
+  }
+  .swiper {
+    height: 580px !important;
+  }
+  .blogCard {
+    height: 250px;
+  }
+  .blogCardImage {
+    height: 140px !important;
+  }
+  .blogCardContent {
+    padding: 6px;
+  }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 42px !important;
+  }
+
+  .blogHead {
+    font-size: 22px;
+  }
+  .blogLabel {
+    font-size: 16px;
+    padding: 18px 16px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 16px;
+    padding: 18px 16px;
+  }
+  .cbox {
+    font-size: 16px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 16px;
+    padding: 18px 16px;
+  }
+  .removeIcon {
+    width: 34px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 16px;
+  }
+  .previewHead {
+    font-size: 38px;
+  }
+
+  .regForm,
+  .loginForm {
+    gap: 24px;
+  }
+  .RegHeading,
+  .LoginHeading {
+    font-size: 28px;
+  }
+  .inputBars {
+    padding: 20px;
+    font-size: 18px;
+  }
+  .regButton,
+  .loginButton {
+    padding: 20px;
+    font-size: 18px;
+  }
+  .alreadyAnUser,
+  .newUser {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 1281px) and (max-width: 1367px) {
+  .menuBtn {
+    font-size: 18px;
+  }
+  .menu-box {
+    gap: 24px;
+  }
+  .logBtn {
+    width: 300px;
+  }
+  .Login,
+  .NewRegister {
+    font-size: 18px;
+    width: 145px;
+    padding: 12px;
+  }
+  .bannerText {
+    font-size: 18px;
+  }
+  .bannerSub {
+    font-size: 26px;
+  }
+  h1 {
+    font-size: 56px;
+  }
+  .C-menu {
+    font-size: 18px;
+  }
+  .font-bold {
+    font-size: 26px;
+  }
+  .newBlogCreateBtn {
+    font-size: 18px;
+  }
+  .formHeader {
+    font-size: 34px;
+  }
+  .label {
+    font-size: 20px;
+  }
+  .Msginput {
+    font-size: 17px;
+  }
+  .MsgField {
+    font-size: 17px;
+  }
+  .MsgSubmitBtn {
+    font-size: 20px;
+    padding: 18px 24px;
+  }
+  .f-content {
+    font-size: 18px;
+    width: 526px;
+  }
+  .SocialMedia {
+    width: 48px;
+    height: 48px;
+  }
+  .CopyRights {
+    font-size: 18px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 52px;
+  }
+  .create {
+    font-size: 18px;
+  }
+  .tableRows {
+    font-size: 18px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 16px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 18px;
+  }
+  .previewHead {
+    font-size: 44px;
+  }
+  strong {
+    font-size: 30px;
+  }
+  .prose {
+    font-size: 18px;
+  }
+  .publishedPage {
+    font-size: 18px;
+  }
+  .msg {
+    font-size: 18px;
+  }
+  .bannerCaption {
+    font-size: 65px;
+    top: 22px;
+    right: 50px;
+  }
+  .blogCardTitle {
+    font-size: 20px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(209px, 1fr));
+  }
+  .swiper {
+    height: 680px !important;
+  }
+
+  .blogCard {
+    height: 250px;
+  }
+  .blogCardImage {
+    height: 140px !important;
+  }
+  .blogCardContent {
+    padding: 8px;
+  }
+  .blogHead {
+    font-size: 24px;
+  }
+  .blogLabel {
+    font-size: 18px;
+    padding: 19px 17px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 18px;
+    padding: 19px 17px;
+  }
+  .cbox {
+    font-size: 18px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 18px;
+    padding: 19px 17px;
+  }
+  .removeIcon {
+    width: 35px !important;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 18px;
+  }
+  .previewHead {
+    font-size: 42px;
+  }
+}
+@media screen and (min-width: 1367px) and (max-width: 1400px) {
+  .menuBtn {
+    font-size: 18px;
+  }
+  .menu-box {
+    gap: 24px;
+  }
+  .logBtn {
+    width: 300px;
+  }
+  .Login,
+  .NewRegister {
+    font-size: 18px;
+    width: 145px;
+    padding: 12px;
+  }
+  .bannerText {
+    font-size: 18px;
+  }
+  .bannerSub {
+    font-size: 26px;
+  }
+  h1 {
+    font-size: 56px;
+  }
+  .C-menu {
+    font-size: 18px;
+  }
+  .font-bold {
+    font-size: 26px;
+  }
+  .newBlogCreateBtn {
+    font-size: 18px;
+  }
+  .formHeader {
+    font-size: 36px;
+  }
+  .label {
+    font-size: 21px;
+  }
+  .Msginput {
+    font-size: 18px;
+  }
+  .MsgField {
+    font-size: 18px;
+  }
+  .MsgSubmitBtn {
+    font-size: 21px;
+    padding: 18px 24px;
+  }
+  .f-content {
+    font-size: 18px;
+    width: 556px;
+  }
+  .SocialMedia {
+    width: 50px;
+    height: 50px;
+  }
+  .CopyRights {
+    font-size: 18px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 54px;
+  }
+  .create {
+    font-size: 20px;
+  }
+  .tableRows {
+    font-size: 20px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 17px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 19px;
+  }
+  .previewHead {
+    font-size: 45px;
+  }
+  strong {
+    font-size: 31px;
+  }
+  .prose {
+    font-size: 19px;
+  }
+  .publishedPage {
+    font-size: 19px;
+  }
+  .msg {
+    font-size: 19px;
+  }
+  .bannerCaption {
+    font-size: 68px;
+    top: 26px;
+    right: 54px;
+  }
+  .blogCardTitle {
+    font-size: 21px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  }
+  .swiper {
+    height: 720px !important;
+  }
+
+  .blogCard {
+    height: 270px;
+  }
+  .blogCardImage {
+    height: 160px !important;
+  }
+  .blogCardContent {
+    padding: 9px;
+  }
+
+  .blogHead {
+    font-size: 26px;
+  }
+  .blogLabel {
+    font-size: 19px;
+    padding: 20px 18px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 19px;
+    padding: 20px 18px;
+  }
+  .cbox {
+    font-size: 19px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 19px;
+    padding: 20px 18px;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 19px;
+  }
+  .previewHead {
+    font-size: 44px;
+  }
+}
+@media screen and (min-width: 1401px) and (max-width: 1440px) {
+  .menuBtn {
+    font-size: 19px;
+  }
+  .menu-box {
+    gap: 24px;
+  }
+  .logBtn {
+    width: 320px;
+  }
+  .Login,
+  .NewRegister {
+    font-size: 19px;
+    width: 155px;
+    padding: 12px;
+  }
+  .bannerText {
+    font-size: 19px;
+  }
+  .bannerSub {
+    font-size: 27px;
+  }
+  h1 {
+    font-size: 57px;
+  }
+  .C-menu {
+    font-size: 19px;
+  }
+  .font-bold {
+    font-size: 26px;
+  }
+  .newBlogCreateBtn {
+    font-size: 18px;
+  }
+  .formHeader {
+    font-size: 36px;
+  }
+  .label {
+    font-size: 21px;
+  }
+  .Msginput {
+    font-size: 18px;
+  }
+  .MsgField {
+    font-size: 18px;
+  }
+  .MsgSubmitBtn {
+    font-size: 21px;
+    padding: 18px 24px;
+  }
+  .f-content {
+    font-size: 19px;
+    width: 556px;
+  }
+  .SocialMedia {
+    width: 50px;
+    height: 50px;
+  }
+  .CopyRights {
+    font-size: 19px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 56px;
+  }
+  .create {
+    font-size: 21px;
+  }
+  .tableRows {
+    font-size: 21px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 18px;
+  }
+  /* preview */
+  .categoryName {
+    font-size: 19px;
+  }
+  .previewHead {
+    font-size: 45px;
+  }
+  strong {
+    font-size: 31px;
+  }
+  .prose {
+    font-size: 19px;
+  }
+  .publishedPage {
+    font-size: 19px;
+  }
+  .msg {
+    font-size: 19px;
+  }
+  .bannerCaption {
+    font-size: 68px;
+    top: 26px;
+    right: 54px;
+  }
+  .blogCardTitle {
+    font-size: 21px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .swiper {
+    height: 720px !important;
+  }
+  .blogCard {
+    height: 300px;
+  }
+  .blogCardImage {
+    height: 180px !important;
+  }
+  .blogCardContent {
+    padding: 10px;
+  }
+  .blogHead {
+    font-size: 26px;
+  }
+  .blogLabel {
+    font-size: 19px;
+    padding: 20px 18px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 19px;
+    padding: 20px 18px;
+  }
+  .cbox {
+    font-size: 19px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 19px;
+    padding: 20px 18px;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 19px;
+  }
+  .previewHead {
+    font-size: 44px;
+  }
+}
+@media screen and (min-width: 1441px) and (max-width: 1536px) {
+  .menuBtn {
+    font-size: 20px;
+  }
+  .menu-box {
+    gap: 24px;
+  }
+  .Login,
+  .NewRegister {
+    font-size: 20px;
+    width: 164px;
+    padding: 12px;
+  }
+  .bannerText {
+    font-size: 20px;
+  }
+  .bannerSub {
+    font-size: 28px;
+  }
+  h1 {
+    font-size: 58px;
+  }
+  .C-menu {
+    font-size: 20px;
+  }
+  .font-bold {
+    font-size: 28px;
+  }
+  .newBlogCreateBtn {
+    font-size: 20px;
+  }
+  .formHeader {
+    font-size: 38px;
+  }
+  .label {
+    font-size: 22px;
+  }
+  .Msginput {
+    font-size: 19px;
+  }
+  .MsgField {
+    font-size: 19px;
+  }
+  .MsgSubmitBtn {
+    font-size: 22px;
+    padding: 18px 26px;
+  }
+  .f-content {
+    font-size: 20px;
+    width: 556px;
+  }
+  .SocialMedia {
+    width: 52px;
+    height: 52px;
+  }
+  .CopyRights {
+    font-size: 20px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 56px;
+  }
+  .create {
+    font-size: 21px;
+  }
+  .tableRows {
+    font-size: 21px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 18px;
+  }
+  /* preview */
+
+  .categoryName {
+    font-size: 20px;
+  }
+  .previewHead {
+    font-size: 46px;
+  }
+  strong {
+    font-size: 32px;
+  }
+  .prose {
+    font-size: 20px;
+  }
+  .publishedPage {
+    font-size: 20px;
+  }
+  .msg {
+    font-size: 20px;
+  }
+  .bannerCaption {
+    font-size: 70px;
+    top: 28px;
+    right: 60px;
+  }
+  .blogCardTitle {
+    font-size: 22px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  }
+  .swiper {
+    height: 780px !important;
+  }
+  .blogHead {
+    font-size: 28px;
+  }
+  .blogLabel {
+    font-size: 20px;
+    padding: 21px 19px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 20px;
+    padding: 21px 19px;
+  }
+  .cbox {
+    font-size: 20px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 20px;
+    padding: 21px 19px;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 20px;
+  }
+  .previewHead {
+    font-size: 46px;
+  }
+}
+@media screen and (min-width: 1537px) and (max-width: 1720px) {
+  .menuBtn {
+    font-size: 22px;
+  }
+  .Login,
+  .NewRegister {
+    font-size: 22px;
+    width: 164px;
+  }
+  .bannerText {
+    font-size: 22px;
+  }
+  .bannerSub {
+    font-size: 30px;
+  }
+  h1 {
+    font-size: 62px;
+  }
+  .C-menu {
+    font-size: 22px;
+  }
+  .logBtn {
+    width: 380px;
+  }
+  .font-bold {
+    font-size: 30px;
+  }
+  .newBlogCreateBtn {
+    font-size: 22px;
+  }
+  .formHeader {
+    font-size: 40px;
+  }
+  .label {
+    font-size: 23px;
+  }
+  .Msginput {
+    font-size: 20px;
+  }
+  .MsgField {
+    font-size: 20px;
+  }
+  .MsgSubmitBtn {
+    font-size: 23px;
+    padding: 18px 28px;
+  }
+  .f-content {
+    font-size: 22px;
+    width: 566px;
+  }
+  .SocialMedia {
+    width: 55px;
+    height: 55px;
+  }
+  .CopyRights {
+    font-size: 22px;
+  }
+  /* userManagement */
+  .umHeading {
+    font-size: 58px;
+  }
+  .create {
+    font-size: 22px;
+  }
+  .tableRows {
+    font-size: 23px;
+  }
+  .accountBtn,
+  .mailInput,
+  .userRole {
+    font-size: 19px;
+  }
+  /* preview */
+
+  .categoryName {
+    font-size: 22px;
+  }
+  .previewHead {
+    font-size: 48px;
+  }
+  strong {
+    font-size: 34px;
+  }
+  .prose {
+    font-size: 22px;
+  }
+  .publishedPage {
+    font-size: 22px;
+  }
+  .msg {
+    font-size: 22px;
+  }
+  .bannerCaption {
+    font-size: 72px;
+    top: 30px;
+    right: 62px;
+  }
+  .blogCardTitle {
+    font-size: 23px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  .swiper {
+    height: 850px !important;
+  }
+  .blogHead {
+    font-size: 30px;
+  }
+  .blogLabel {
+    font-size: 21px;
+    padding: 22px 20px;
+  }
+  .blogTitle,
+  .dropbox {
+    font-size: 21px;
+    padding: 22px 20px;
+  }
+  .cbox {
+    font-size: 21px;
+  }
+  .saveBtn,
+  .CancelBtn {
+    font-size: 21px;
+    padding: 22px 20px;
+  }
+  .categoryName,
+  .downloadBtn,
+  .publishedPage {
+    font-size: 22px;
+  }
+  .previewHead {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 1721px) and (max-width: 1920px) {
+  .menuBtn {
+    font-size: 24px;
+  }
+  .Login,
+  .NewRegister {
+    font-size: 24px;
+    width: 166px;
+  }
+  .logBtn {
+    width: 380px;
+  }
+  .newBlogCreateBtn {
+    font-size: 24px;
+  }
+  .create {
+    font-size: 24px;
+  }
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .swiper {
+    height: 950px !important;
+  }
+  .bannerCaption {
+    top: 34px;
+    right: 68px;
+  }
+}
+/* breakage points */
+@media screen and (min-width: 1279px) and (max-width: 1280px) {
+  .BlogListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+  }
+}
