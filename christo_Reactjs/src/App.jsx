@@ -11,7 +11,7 @@ import { Footer } from "./components/Footer";
 import { CategoryContext } from "./components/Category";
 import BlogEditor from "./components/BlogEditor";
 import Layout from "./components/Layout";
-import Canonical from "./components/canonical";
+import Canonical from "./components/Canonical";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
