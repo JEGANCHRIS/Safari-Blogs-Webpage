@@ -52,4 +52,9 @@ mongoose
 // Routes
 app.use("/api", routes);
 
+// ✅ Root health route (for Render)
+app.get("/", (req, res) => {
+  res.send("Safari Blogs Backend is running 🚀");
+});
+
 module.exports = { app };
