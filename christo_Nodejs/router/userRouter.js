@@ -27,6 +27,10 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+// for render
+app.get("/", (req, res) => {
+  res.send("Safari Blogs Backend is running 🚀");
+});
 /** Auth */
 router.post("/login", validateLogin, rateLimit(), authCtrl.login);
 
@@ -34,7 +38,7 @@ router.post(
   "/users/super-admin",
   rateLimit(),
   validateUserCreate,
-  userCtrl.createSuperAdmin
+  userCtrl.createSuperAdmin,
 );
 
 router.post(
@@ -43,7 +47,7 @@ router.post(
   roleIn(["superAdmin"]),
   rateLimit(),
   validateUserCreate,
-  userCtrl.createAdmin
+  userCtrl.createAdmin,
 );
 
 router.post(
@@ -52,7 +56,7 @@ router.post(
   roleIn(["superAdmin", "Admin"]),
   rateLimit(),
   validateUserCreate,
-  userCtrl.createUser
+  userCtrl.createUser,
 );
 router.put(
   "/users/:id",
@@ -60,13 +64,13 @@ router.put(
   roleIn(["Admin", "superAdmin"]),
   rateLimit(),
   validateUserIdParam,
-  userCtrl.updateUser
+  userCtrl.updateUser,
 );
 router.delete(
   "/delete-user/:id",
   auth,
   roleIn(["Admin", "superAdmin"]),
-  userCtrl.deleteUser
+  userCtrl.deleteUser,
 );
 router.get("/roles", async (req, res) => {
   try {
@@ -80,7 +84,7 @@ router.get(
   "/GetAllUsers",
   auth,
   roleIn(["Admin", "superAdmin"]),
-  userCtrl.getAllUsers
+  userCtrl.getAllUsers,
 );
 
 /** login as any user*/
@@ -93,14 +97,14 @@ router.post(
   rateLimit(),
   upload.fields([{ name: "bannerImage" }, { name: "cardImage" }]),
   validateBlogCreate,
-  blogCtrl.createBlog
+  blogCtrl.createBlog,
 );
 router.put(
   "/UpdateBlogs/:id",
   auth,
   rateLimit(),
   upload.fields([{ name: "bannerImage" }, { name: "cardImage" }]),
-  blogCtrl.updateBlog
+  blogCtrl.updateBlog,
 );
 router.get("/blog/:id", blogCtrl.BlogById);
 router.get("/GetMyblogs/users", auth, blogCtrl.getMyBlogs);
@@ -108,13 +112,9 @@ router.get(
   "/getallblogs",
   auth,
   roleIn(["admin", "superAdmin"]),
-  blogCtrl.getAllBlogs
+  blogCtrl.getAllBlogs,
 );
-router.get(
-  "/getmyblogs",
-  auth,
-  blogCtrl.getMyBlogs
-);
+router.get("/getmyblogs", auth, blogCtrl.getMyBlogs);
 router.delete("/deleteBlog/:id", auth, rateLimit(), blogCtrl.deleteBlog);
 /** category */
 router.post("/create-category", auth, userCtrl.createCategory);
