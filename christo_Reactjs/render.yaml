@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: safari-blogs-frontend
+    name: christo_Reactjs
     env: static
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    staticPublishPath: build
     envVars:
       - key: NODE_ENV
         value: production
